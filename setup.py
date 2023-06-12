@@ -6,7 +6,7 @@ with open('README.md', 'r', encoding='utf-8') as fh:
 setup(
     name='sqlalchemy_model_faker',
     packages=['sqlalchemy_model_faker'],
-    version='CURRENT_VERSION',
+    version='0.4.0',
     license='MIT',
     description='Generate SQLAlchemy models with fake data',
     long_description=long_description,
