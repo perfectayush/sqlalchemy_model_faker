@@ -59,7 +59,12 @@ class factory:
         # Example: self.faker.email()
         if column_data.key in types.keys():
             try:
-                method = getattr(self.faker, types[column_data.key])
+                method_string = types[column_data.key]
+                if method_string.startswith('unique.'):
+                    method_string = method_string.replace('unique.', '')
+                    method = getattr(self.faker.unique, method_string)
+                else:
+                    method = getattr(self.faker, method_string)
                 return method()
             except Exception as e:
                 raise ValueError(f'Faker does not support "{types[column_data.key]}" method') from e  # nopep8
